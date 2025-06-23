@@ -7,7 +7,7 @@ const token = jwt.sign({userId}, process.env.JWT_SECRET, {
 res.cookie("jwt", token, {
     httpOnly: true, //xss
     secure: process.env.NODE_ENV !== "development",
-    sameSite: 'lax', //csrf
+    sameSite: 'none', //csrf
     maxAge: 24 * 60 * 60 * 1000
 })
 }
