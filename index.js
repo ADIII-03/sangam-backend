@@ -33,11 +33,10 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(cookieParser());
 
-const corsOptions = {
+app.use(cors({
   origin: 'https://sangam-frontend-rust.vercel.app',
   credentials: true,
-};
-app.use(cors(corsOptions));
+}));
 
 // Your routes
 app.use('/api/v1/auth', authRoutes);
