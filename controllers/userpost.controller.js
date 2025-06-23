@@ -247,7 +247,9 @@ export const commentOnUserPost = async (req, res) => {
       });
     }
 
-    const postToUpdate = await post.findById(postId).populate("createdBy.id", "name email profilepic");
+    const postToUpdate = await post.findById(postId)
+    .populate("createdBy.id", "name email profilepic")
+    .comments.author("name email profilepic");
     if (!postToUpdate) {
       return res.status(404).json({
         success: false,
