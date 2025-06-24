@@ -267,7 +267,7 @@ export const commentOnUserPost = async (req, res) => {
 
     postToUpdate.comments.push(newComment);
     await postToUpdate.save();
-
+    
     // Create a notification for the post creator
     const receiverId = postToUpdate?.createdBy?.id?._id;
     const senderName = req.user?.name || "Someone";
@@ -288,6 +288,9 @@ const receiverRoom = postToUpdate.createdBy.id._id.toString();
         // Only emit if notification is created
 
         io.to(receiverRoom).emit("newNotification", notification);
+const updatedPost = await post.findById(postId)
+  .populate("createdBy.id", "name email profilepic")
+  .populate("comments.author", "name email profilepic");
 
     return res.status(200).json({
       success: true,
