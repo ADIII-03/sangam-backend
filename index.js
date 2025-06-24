@@ -24,7 +24,7 @@ const server = http.createServer(app); // Create HTTP server from Express app
 // Setup Socket.IO on the same server
 const io = new Server(server, {
   cors: {
-    origin: 'https://sangam-frontend-rust.vercel.app',
+    origin: ['https://sangam-frontend-rust.vercel.app' ,'http://localhost:5173'],
     credentials: true,
   },
 });
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://sangam-frontend-rust.vercel.app',
+  origin: ['https://sangam-frontend-rust.vercel.app','http://localhost:5173'],
   credentials: true,
 }));
 
@@ -95,7 +95,10 @@ socket.on("stopTyping", ({ to, from }) => {
   io.to(to).emit("stopTyping", { from });
 });
 
- 
+socket.on("messageseen", ({ receiverId }) => {
+  io.to(receiverId).emit("messageSeen", { receiverId });
+});
+
 
 
   socket.on('disconnect', () => {

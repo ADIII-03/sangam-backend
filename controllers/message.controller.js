@@ -179,18 +179,18 @@ export const getSinglePartner = async (req, res) => {
 
 export const markMessagesAsSeen = async (req, res) => {
   try {
+    console.log('markMessagesAsSeen called with partnerId:', req.params.partnerId);
+    console.log('Current userId:', req.userId);
 
-      console.log('markMessagesAsSeen called with partnerId:', req.params.partnerId);
-      console.log(req.userId);
-    const myUserId = req.userId;               // jo currently logged-in user hai
-    const otherUserId = req.params.partnerId; // jiska chat dekh rahe hain
+    const myUserId = req.userId;               // Logged-in user
+    const otherUserId = req.params.partnerId; // Chat partner whose messages we're marking as seen
 
     await Message.updateMany(
       { senderId: otherUserId, receiverId: myUserId, seen: false },
       { $set: { seen: true } }
     );
 
-    // Optionally, emit a socket event to notify sender
+    // Notify sender in real-time via socket.io
     io.to(otherUserId.toString()).emit("messageSeen", { receiverId: myUserId });
 
     return res.status(200).json({ success: true, message: "Messages marked as seen" });
@@ -199,6 +199,8 @@ export const markMessagesAsSeen = async (req, res) => {
     return res.status(500).json({ success: false, message: "Server error" });
   }
 };
+
+
 
 
 export const getPartnersWithLastMessages = async (req, res) => {

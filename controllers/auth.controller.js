@@ -473,9 +473,7 @@ export const verifyFemale = asyncHandler(async (req, res) => {
       throw new ErrorHandler("User not found", 404);
   }
 
-  if (!req.file) {
-    throw new ErrorHandler("Please upload a document", 400);
-  }
+ 
 
    const localPath = req.file.path;
 
