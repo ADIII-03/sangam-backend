@@ -38,6 +38,11 @@ app.use(cors({
   credentials: true,
 }));
 
+app.get("/", (req, res) => {
+  res.send("Server is up and running!");
+});
+
+
 // Your routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/ngo', ngoRoutes);
