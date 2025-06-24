@@ -22,7 +22,7 @@ export const signup = asyncHandler(async (req, res) => {
     const { name, email, password, gender } = req.body;
     const profilepic = req.file;
 
-    if (!name || !email || !password || !gender || !profilepic) {
+    if (!name || !email || !password || !gender ) {
       throw new ErrorHandler("Please fill all the fields & upload a valid picture", 400);
     }
    
