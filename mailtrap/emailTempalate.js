@@ -127,7 +127,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
     <p>Thank you for joining Sangan! We're thrilled to have you with us.</p>
     <p>Click the button below to log in and get started:</p>
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://sangam-frontend-rust.vercel.app/login" style="background-color: #007BFF; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Login Now</a>
+      <a href="https://sangam-frontend-rust.vercel.app/who-are-you" style="background-color: #007BFF; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Login Now</a>
     </div>
     <p>We're here to help you make the most of your experience. If you have any questions, feel free to reach out.</p>
     <p>Best regards,<br>
