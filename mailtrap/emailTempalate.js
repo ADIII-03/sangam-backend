@@ -118,7 +118,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   <!-- Header with blue gradient -->
   <div style="background: linear-gradient(to right, #007BFF, #0056b3); padding: 20px; text-align: center;">
-    <h1 style="color: white; margin: 0;">Welcome to Sangan, {name} 🎉</h1>
+    <h1 style="color: white; margin: 0;">Welcome to Sangam, {name} 🎉</h1>
   </div>
 
   <!-- Body content -->
